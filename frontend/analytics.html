@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ward Analytics — UrbanLens</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="analytics.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="nav-brand">UrbanLens</span>
+    <div class="nav-right">
+      <span id="nav-user"></span>
+      <span id="nav-role-badge" class="role-badge"></span>
+      <a href="index.html" class="nav-link">Home</a>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="analytics-page">
+    <div class="page-header">
+      <a href="index.html" class="back-btn">← Dashboard</a>
+      <h2>Ward Analytics</h2>
+      <p class="subtitle">Infrastructure health comparison across all wards.</p>
+    </div>
+
+    <div id="loading-state" class="loading-state">Loading analytics...</div>
+    <div id="empty-state"   class="empty-state" style="display:none;">
+      <span>📊</span><p>No report data available yet.</p>
+    </div>
+
+    <div id="analytics-content" style="display:none;">
+
+      <!-- Summary cards -->
+      <div class="summary-cards" id="summary-cards"></div>
+
+      <!-- Charts row -->
+      <div class="charts-row">
+        <div class="chart-box">
+          <h3>Total Reports per Ward</h3>
+          <canvas id="chart-total"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Resolution Rate (%) per Ward</h3>
+          <canvas id="chart-resolution"></canvas>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="chart-box">
+          <h3>Average Severity per Ward</h3>
+          <canvas id="chart-severity"></canvas>
+        </div>
+        <div class="chart-box">
+          <h3>Status Breakdown — Top Ward</h3>
+          <canvas id="chart-status"></canvas>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-box">
+        <h3>Full Ward Breakdown</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ward</th>
+                <th>City</th>
+                <th>Total</th>
+                <th>Pending</th>
+                <th>Verified</th>
+                <th>In Progress</th>
+                <th>Resolved</th>
+                <th>Avg Severity</th>
+                <th>Resolution %</th>
+              </tr>
+            </thead>
+            <tbody id="analytics-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="analytics.js"></script>
+</body>
+</html>

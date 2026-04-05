@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City Heatmap — UrbanLens</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet Heat plugin -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="heatmap.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="nav-brand">UrbanLens</span>
+    <div class="nav-right">
+      <span id="nav-user"></span>
+      <span id="nav-role-badge" class="role-badge"></span>
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Toolbar -->
+  <div class="map-toolbar">
+    <a href="index.html" class="back-btn">← Dashboard</a>
+    <div class="toolbar-center">
+      <h2>City Road Damage Heatmap</h2>
+      <span id="report-count" class="count-badge">Loading...</span>
+    </div>
+    <div class="filter-group">
+      <label>Filter:</label>
+      <select id="filter-type">
+        <option value="all">All Types</option>
+        <option value="Pothole">Pothole</option>
+        <option value="Crack">Crack</option>
+        <option value="Waterlogging">Waterlogging</option>
+      </select>
+      <select id="filter-severity">
+        <option value="all">All Severities</option>
+        <option value="5">Critical (5)</option>
+        <option value="4">High (4)</option>
+        <option value="3">Medium (3)</option>
+        <option value="2">Low (2)</option>
+        <option value="1">Minimal (1)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- No data overlay -->
+  <div id="no-data-msg" class="no-data-overlay" style="display:none;">
+    <div class="no-data-box">
+      <span>🗺️</span>
+      <p>No reports found on the map.</p>
+      <small>Submit a report first, then come back here.</small>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="map-legend">
+    <div class="legend-title">Damage Severity</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#ff0000;"></span> Critical (5)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#ff6600;"></span> High (4)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#ffaa00;"></span> Medium (3)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#ffdd00;"></span> Low (2)</div>
+    <div class="legend-item"><span class="legend-dot" style="background:#00cc44;"></span> Minimal (1)</div>
+  </div>
+
+  <!-- Popup panel -->
+  <div id="report-panel" class="report-panel" style="display:none;">
+    <button class="panel-close" id="panel-close">✕</button>
+    <h3 id="panel-type"></h3>
+    <div class="panel-rows" id="panel-rows"></div>
+  </div>
+
+  <script src="heatmap.js"></script>
+</body>
+</html>

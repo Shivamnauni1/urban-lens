@@ -1,0 +1,107 @@
+.page-body {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.report-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.report-box h2 { font-size: 1.4rem; color: #0f3460; margin-bottom: 6px; }
+.subtitle { color: #888; font-size: 0.88rem; margin-bottom: 28px; }
+
+.field { margin-bottom: 20px; }
+.field label { display: block; font-size: 0.82rem; font-weight: 600; color: #555; margin-bottom: 8px; }
+.req { color: #e53e3e; }
+.optional { color: #aaa; font-weight: 400; }
+
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  background: #fafafa;
+}
+textarea:focus { outline: none; border-color: #0f3460; background: #fff; }
+
+/* Upload area */
+.upload-area {
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+  background: #fafafa;
+}
+.upload-area:hover { border-color: #0f3460; }
+.upload-area input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.upload-placeholder .upload-icon { font-size: 2rem; }
+.upload-placeholder p { color: #888; font-size: 0.85rem; margin-top: 8px; }
+
+#image-preview {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* GPS row */
+.gps-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.gps-row input { flex: 1; min-width: 120px; }
+.gps-row button {
+  padding: 10px 14px;
+  background: #0f3460;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.gps-row button:hover { background: #1a4a8a; }
+.gps-row button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.gps-status { font-size: 0.82rem; margin-top: 6px; color: #666; }
+.gps-status.ok  { color: #155724; }
+.gps-status.err { color: #721c24; }
+
+.nav-link {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+.nav-link:hover { color: #fff; }
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #0f3460;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.back-btn:hover { text-decoration: underline; }
+
+.manual-coords { margin-top: 6px; font-size: 0.82rem; }
+.manual-coords a { color: #0f3460; font-weight: 600; text-decoration: none; }
+.manual-coords a:hover { text-decoration: underline; }
+.coords-row { display: flex; gap: 10px; }
+.coords-row .field { flex: 1; }

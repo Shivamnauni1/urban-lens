@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Reports — UrbanLens</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="my-reports.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="nav-brand">UrbanLens</span>
+    <div class="nav-right">
+      <span id="nav-user"></span>
+      <span id="nav-role-badge" class="role-badge"></span>
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-body">
+    <div class="page-header">
+      <a href="index.html" class="back-btn">← Back to Dashboard</a>
+      <h2>My Reports</h2>
+      <p class="subtitle">All road damage reports you have submitted.</p>
+    </div>
+
+    <div id="loading" class="loading-state">Loading your reports...</div>
+    <div id="empty" class="empty-state" style="display:none;">
+      <span>📭</span>
+      <p>You haven't submitted any reports yet.</p>
+      <a href="report.html" class="submit-link">Submit your first report →</a>
+    </div>
+
+    <div id="reports-list" style="display:none;"></div>
+  </div>
+
+  <!-- Modal for full image -->
+  <div id="img-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">✕</button>
+      <img id="modal-img" src="" alt="Report image" />
+    </div>
+  </div>
+
+  <script src="my-reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Report — UrbanLens</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="report.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="nav-brand">UrbanLens</span>
+    <div class="nav-right">
+      <span id="nav-user"></span>
+      <span id="nav-role-badge" class="role-badge"></span>
+      <a href="index.html" class="nav-link">Dashboard</a>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="page-body">
+    <div class="report-box">
+      <a href="index.html" class="back-btn">← Back to Dashboard</a>
+      <h2>Submit Road Damage Report</h2>
+      <p class="subtitle">Upload a photo and share your location to report road damage.</p>
+
+      <form id="report-form">
+
+        <!-- Image upload -->
+        <div class="field">
+          <label>Photo of Damage <span class="req">*</span></label>
+          <div class="upload-area" id="upload-area">
+            <input type="file" id="image-input" accept="image/jpeg,image/png" required />
+            <div class="upload-placeholder" id="upload-placeholder">
+              <span class="upload-icon">📷</span>
+              <p>Click to select a JPEG or PNG image (max 10MB)</p>
+            </div>
+            <img id="image-preview" src="" alt="Preview" style="display:none;" />
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="field">
+          <label>Description <span class="optional">(optional)</span></label>
+          <textarea id="description" rows="3" placeholder="Describe the damage (e.g. large pothole near bus stop)"></textarea>
+        </div>
+
+        <!-- GPS -->
+        <div class="field">
+          <label>GPS Location <span class="req">*</span></label>
+          <div class="gps-row">
+            <input type="number" id="latitude"  placeholder="Latitude"  step="any" readonly />
+            <input type="number" id="longitude" placeholder="Longitude" step="any" readonly />
+            <button type="button" id="get-location-btn">📍 Get My Location</button>
+          </div>
+          <p id="gps-status" class="gps-status"></p>
+          <div class="manual-coords" style="margin-top:6px;">
+            <a href="#" id="show-manual-gps">Enter coordinates manually instead</a>
+          </div>
+          <div id="manual-gps-inputs" style="display:none; margin-top:8px;">
+            <div class="coords-row">
+              <div class="field" style="margin-bottom:0;">
+                <label>Latitude</label>
+                <input type="number" id="manual-report-lat" placeholder="e.g. 30.3165" step="any" />
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label>Longitude</label>
+                <input type="number" id="manual-report-lng" placeholder="e.g. 78.0322" step="any" />
+              </div>
+            </div>
+            <button type="button" id="apply-manual-gps-btn" style="margin-top:8px; width:100%; padding:9px; background:#0f3460; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:0.88rem;">✓ Use These Coordinates</button>
+          </div>
+        </div>
+
+        <button type="submit" id="submit-btn">Submit Report</button>
+      </form>
+
+      <div id="report-msg" class="msg" style="display:none;"></div>
+    </div>
+  </div>
+
+  <script src="report.js"></script>
+</body>
+</html>

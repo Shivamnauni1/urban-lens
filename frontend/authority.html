@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authority Dashboard — UrbanLens</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="authority.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="nav-brand">UrbanLens</span>
+    <div class="nav-right">
+      <span id="nav-user"></span>
+      <span id="nav-role-badge" class="role-badge"></span>
+      <a href="index.html" class="nav-link">Home</a>
+      <button id="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <div class="auth-page">
+
+    <!-- Stats bar -->
+    <div class="stats-bar" id="stats-bar">
+      <div class="stat-card" id="stat-total">  <div class="stat-num">—</div><div class="stat-label">Total</div></div>
+      <div class="stat-card" id="stat-pending"> <div class="stat-num">—</div><div class="stat-label">Pending</div></div>
+      <div class="stat-card" id="stat-verified"><div class="stat-num">—</div><div class="stat-label">Verified</div></div>
+      <div class="stat-card" id="stat-progress"><div class="stat-num">—</div><div class="stat-label">In Progress</div></div>
+      <div class="stat-card" id="stat-resolved"><div class="stat-num">—</div><div class="stat-label">Resolved</div></div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters-bar">
+      <a href="index.html" class="back-btn">← Dashboard</a>
+      <div class="filters">
+        <select id="filter-status">
+          <option value="">All Statuses</option>
+          <option value="Pending">Pending</option>
+          <option value="Verified">Verified</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <select id="filter-type">
+          <option value="">All Types</option>
+          <option value="Pothole">Pothole</option>
+          <option value="Crack">Crack</option>
+          <option value="Waterlogging">Waterlogging</option>
+          <option value="Evaluating">Evaluating</option>
+        </select>
+        <input type="text" id="filter-ward" placeholder="Filter by ward..." />
+        <button id="apply-filters-btn">Apply</button>
+        <button id="reset-filters-btn" class="btn-secondary">Reset</button>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <div id="table-loading" class="table-state">Loading reports...</div>
+      <div id="table-empty"   class="table-state" style="display:none;">No reports match your filters.</div>
+      <table id="reports-table" style="display:none;">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Citizen</th>
+            <th>Type</th>
+            <th>Severity</th>
+            <th>Ward</th>
+            <th>City</th>
+            <th>Status</th>
+            <th>Submitted</th>
+            <th>Update</th>
+            <th>Repair</th>
+          </tr>
+        </thead>
+        <tbody id="reports-tbody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Repair Log Modal -->
+  <div id="repair-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop" id="repair-backdrop"></div>
+    <div class="modal-content repair-modal-box">
+      <button class="modal-close" id="repair-modal-close">✕</button>
+      <h3>Log Repair Action</h3>
+      <p id="repair-report-id" style="font-size:0.78rem;color:#aaa;margin-bottom:16px;"></p>
+      <div class="field">
+        <label>Action Taken <span class="req">*</span></label>
+        <input type="text" id="repair-action" placeholder="e.g. Pothole filled with asphalt" />
+      </div>
+      <div class="field">
+        <label>Update Status To <span class="req">*</span></label>
+        <select id="repair-status">
+          <option value="In Progress">In Progress</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Verified">Verified</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Note <span style="color:#aaa;font-weight:400;">(optional)</span></label>
+        <textarea id="repair-note" rows="2" placeholder="Any additional details..."></textarea>
+      </div>
+      <button id="repair-submit-btn" class="repair-submit-btn">Submit Log</button>
+      <div id="repair-msg" class="msg" style="display:none;margin-top:12px;"></div>
+    </div>
+  </div>
+
+  <!-- Image modal -->
+  <div id="img-modal" class="modal" style="display:none;">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">✕</button>
+      <img id="modal-img" src="" alt="Report" />
+    </div>
+  </div>
+
+  <script src="authority.js"></script>
+</body>
+</html>

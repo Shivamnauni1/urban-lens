@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UrbanLens</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- AUTH SECTION -->
+  <div id="auth-section">
+    <div class="auth-box">
+      <div class="brand">
+        <h1>UrbanLens</h1>
+        <p>AI-powered urban infrastructure platform</p>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-view">
+        <h2>Sign In</h2>
+        <form id="login-form">
+          <div class="field">
+            <label>Username</label>
+            <input type="text" id="login-username" placeholder="Enter username" required />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" id="login-password" placeholder="Enter password" required />
+          </div>
+          <button type="submit" id="login-btn">Sign In</button>
+        </form>
+        <p class="toggle-text">No account? <a href="#" id="go-register">Register here</a></p>
+      </div>
+
+      <!-- Register Form -->
+      <div id="register-view" style="display:none;">
+        <h2>Create Account</h2>
+        <form id="register-form">
+          <div class="field">
+            <label>Username</label>
+            <input type="text" id="reg-username" placeholder="Choose a username" required />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" id="reg-password" placeholder="Min 6 characters" required />
+          </div>
+          <div class="field">
+            <label>Role</label>
+            <select id="reg-role">
+              <option value="user">Citizen</option>
+              <option value="ward_authority">Ward Authority</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div class="field" id="ward-field" style="display:none;">
+            <label>Ward / Area Name <span class="req">*</span></label>
+            <input type="text" id="reg-ward-name" placeholder="e.g. Rajpur Road, Patel Nagar" />
+            <div class="field" style="margin-top:10px;">
+              <label>City <span class="req">*</span></label>
+              <input type="text" id="reg-city" placeholder="e.g. Dehradun" />
+            </div>
+            <div class="manual-coords" style="margin-top:8px;">
+              <a href="#" id="show-gps-detect">Or auto-detect from GPS instead</a>
+            </div>
+            <div id="gps-detect-section" style="display:none; margin-top:8px;">
+              <button type="button" id="detect-ward-btn" class="detect-btn">📍 Detect My Location</button>
+              <div id="ward-result" class="ward-result" style="display:none;"></div>
+            </div>
+            <input type="hidden" id="reg-lat" />
+            <input type="hidden" id="reg-lng" />
+            <div class="manual-coords" style="margin-top:6px;">
+              <a href="#" id="show-manual-coords">Or enter coordinates manually</a>
+            </div>
+            <div id="manual-coords-inputs" style="display:none; margin-top:8px;">
+              <div class="coords-row">
+                <div class="field">
+                  <label>Latitude</label>
+                  <input type="number" id="manual-lat" placeholder="e.g. 30.3165" step="any" />
+                </div>
+                <div class="field">
+                  <label>Longitude</label>
+                  <input type="number" id="manual-lng" placeholder="e.g. 78.0322" step="any" />
+                </div>
+              </div>
+              <button type="button" id="lookup-manual-btn" class="detect-btn" style="margin-top:4px;">🔍 Lookup from Coordinates</button>
+            </div>
+            <small style="color:#888;font-size:0.78rem;margin-top:8px;display:block;">
+              One authority account is allowed per ward+city combination.
+            </small>
+          </div>
+          <button type="submit" id="register-btn">Create Account</button>
+        </form>
+        <p class="toggle-text">Have an account? <a href="#" id="go-login">Sign in here</a></p>
+      </div>
+
+      <div id="auth-msg" class="msg" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD SECTION -->
+  <div id="dashboard-section" style="display:none;">
+    <nav class="navbar">
+      <span class="nav-brand">UrbanLens</span>
+      <div class="nav-right">
+        <span id="nav-user"></span>
+        <span id="nav-role-badge" class="role-badge"></span>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </nav>
+
+    <div class="dashboard-body">
+      <h2 id="dashboard-greeting"></h2>
+      <p id="dashboard-subtitle"></p>
+      <div id="dashboard-cards" class="cards-grid"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
